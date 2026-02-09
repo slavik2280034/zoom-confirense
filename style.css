@@ -1,0 +1,94 @@
+/* Загальні налаштування шрифтів */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    color: #333;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    flex-wrap: wrap; /* Щоб на маленьких екранах дні переносились */
+}
+
+/* Картка дня */
+.monday, .tuesday, .wednesday, .thursday, .friday {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    background: #fff;
+    border-radius: 12px; /* Закруглені кути */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* М'яка тінь */
+    overflow: hidden;
+    border: none;
+}
+
+/* Шапки днів з різними кольорами */
+.day {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+    background: #4a90e2; /* Колір за замовчуванням */
+}
+
+/* Додамо індивідуальні кольори для кожного дня */
+.monday .day    { background: #5C6BC0; }
+.tuesday .day   { background: #66BB6A; }
+.wednesday .day { background: #FFA726; }
+.thursday .day  { background: #26A69A; }
+.friday .day    { background: #EC407A; }
+
+/* Блок уроку */
+.leson {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.3s;
+}
+
+.leson:hover {
+    background-color: #fafafa; /* Підсвітка при наведенні */
+}
+
+.leson h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Стильна кнопка */
+button {
+    background-color: #fff;
+    border: 2px solid #4a90e2;
+    color: #4a90e2;
+    padding: 8px 12px;
+    border-radius: 20px; /* Овальна кнопка */
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+    background-color: #4a90e2;
+    color: white;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.4);
+}
+
+button:disabled {
+    border-color: #e0e0e0;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Прибираємо синю лінію під посиланням */
+a {
+    text-decoration: none;
+}
