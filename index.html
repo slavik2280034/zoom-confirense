@@ -5,9 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>розклад</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .emergensy-news {
+        margin: 20px auto;
+        padding: 15px 25px;
+        max-width: 90%;
+        text-align: center;
+        background-color: #fff;
+        color: #d00000;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border-radius: 10px;
+    
+        /* Сама рамка */
+        border: 3px solid #ff0000;
+    
+        /* Підключення анімації */
+        animation: smooth-blink 2s infinite ease-in-out;
+    }
+
+    /* Створюємо круту плавну анімацію */
+    @keyframes smooth-blink {
+        0% {
+            border-color: #ff0000;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.2);
+            transform: scale(1);
+        }
+        50% {
+            border-color: #ffffff; /* Плавний перехід у білий */
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); /* Ефект світіння */
+            transform: scale(1.01); /* Легке "дихання" блоку */
+        }    
+        100% {
+            border-color: #ff0000;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.2);
+            transform: scale(1);
+        }
+    }
+    </style>
 </head>
 <body>
     <div class="content">
+        <div class="emergensy-news"><h1>УВАГА! Сайт може містити неправильні посилання чи взагалі не бути. Дуже вибачаюсь ці помилки будуть виправлені скоро! Якщо знайшли помилку повідомте будь ласка!</h1></div>
         <div class="monday">
             <div class="day">Понеділок</div>
             <div class="leson">
@@ -159,5 +198,6 @@
 </body>
 
 </html>
+
 
 
