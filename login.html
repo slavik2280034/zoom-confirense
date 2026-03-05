@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Вхід | Шкільний Щоденник 7-В</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f0f0f0;
+    }
+    .login-box {
+      background: white;
+      padding: 2rem;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    input {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0 1rem;
+    }
+    button {
+      padding: 0.7rem;
+      width: 100%;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+
+  <!--<h1>дата повноцінного запуску сайту 21.08.2025, а дата запуска і перевірки всіх можливостей сайту 14.08.2025, саме у цю дату 14.08.2025 вам видадуть логіни паролі від ваших профілів</h1>-->
+  <div class="login-box">
+    <h2>Вхід у систему</h2>
+    <input type="text" id="username" placeholder="Ім'я користувача" />
+    <input type="password" id="password" placeholder="Пароль" />
+    <div id="error" class="error"></div>
+    <button onclick="login()">Увійти</button>
+    <p>Якщо ви забули логін чи пароль напишіть адміністрації у вайбері!</p>
+    <p>Якщо виникли проблеми з входу напишіть адміністрації у вайбері!</p>
+  </div>
+
+  <script>
+    const isLoginAllowed = false;
+    const loginBanReason = "Логін ще не працює спробуйте пізніше, все інше готується, ми сповістимо вас як буде оновлення ";
+
+    // MD5 хеш пароля
+    function md5(str) {
+      return CryptoJS.MD5(str).toString();
+    }
+
+    const users = {
+      "admin": { hash: "", role: "admin", id: "0001"},
+      "Slavik": { hash: "", role: "admin", id: "0002"},
+    };
+
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorDiv = document.getElementById("error");
+
+      if (!isLoginAllowed) {
+        errorDiv.textContent = "Вхід заборонено: " + loginBanReason;
+        return;
+      }
+
+      if (users[username] && users[username].hash === md5(password).toLowerCase()) {
+        const userData = users[username];
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("username", username);
+        localStorage.setItem("role", userData.role);
+        localStorage.setItem("userid", userData.id);
+        localStorage.setItem("userAchievements", userData.achievements || "00000000000000");
+
+        if (userData.role === "admin") {
+          window.location.href = "admin.html";
+        } else if (userData.role === "teacher") {
+          window.location.href = "teacher.html";
+        } else if (userData.role === "ml-admin") {
+          window.location.href = "ml-admin.html";
+        } else if (userData.role === "english-teacher") {
+          window.location.href = "english.html";
+        } else {
+          window.location.href = "index.html";
+        }
+      } else {
+        errorDiv.textContent = "Неправильне ім'я користувача або пароль!";
+      }
+    }
+  </script>
+</body>
+</html>
