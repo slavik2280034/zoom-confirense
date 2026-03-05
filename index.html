@@ -3,33 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Розклад занять</title>
+    <title>розклад</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: sans-serif;
-            background-color: #f4f4f9;
-            padding-bottom: 70px; /* Місце для панелі сповіщень */
-        }
-
-        .content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        /* Статуси уроків */
-        .lesson.past {
-            opacity: 0.5;
-            filter: grayscale(100%);
-        }
-
-        .lesson.active {
-            background-color: #e8f5e9 !important; 
-            border-left: 5px solid #4CAF50;
-            animation: pulse-green 2s infinite;
+        .emergensy-news {
+            margin: 20px auto;
+            padding: 15px 25px;
+            max-width: 90%;
+            text-align: center;
+            background-color: #fff;
+            color: #d00000;
+            font-weight: bold;
+            border-radius: 10px;
+            border: 3px solid #ff0000;
+            animation: smooth-blink 2s infinite ease-in-out;
         }
 
         /* Підсвітка поточного дня */
@@ -39,211 +26,212 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
         }
 
+        /* Статуси уроків */
+        .leson.past {
+            opacity: 0.6;
+            filter: grayscale(100%);
+        }
+
+        .leson.active {
+            background-color: #e8f5e9 !important; 
+            border-left: 5px solid #4CAF50;
+            animation: pulse-green 2s infinite;
+        }
+
         @keyframes pulse-green {
             0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
             70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
             100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
         }
 
-        /* Панель сповіщень */
-        .notify-toggle {
-            position: fixed;
-            bottom: 15px;
-            right: 15px;
-            background: white;
-            padding: 12px 18px;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            font-size: 14px;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .notify-toggle input {
-            cursor: pointer;
+        @keyframes smooth-blink {
+            0% { border-color: #ff0000; box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); transform: scale(1); }
+            50% { border-color: #ffffff; box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); transform: scale(1.01); }    
+            100% { border-color: #ff0000; box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); transform: scale(1); }
         }
     </style>
 </head>
 <body>
-<div class="content">
-        <div class="emergensy-news"><h1>УВАГА! Сайт може містити неправильні посилання чи взагалі не бути. Дуже вибачаюсь ці помилки будуть виправлені скоро! Якщо знайшли помилку повідомте будь ласка!</h1></div>
-        <div class="monday">
+    <div class="content">
+        <div class="monday" id="day-1">
             <div class="day">Понеділок</div>
-            <div class="leson">
+            <div class="leson" data-start="08:30" data-end="09:15">
                 <div class="time">08:30 – 09:15</div>
                 <h3>Фізика</h3>
                 <a href="physyc.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="09:25" data-end="10:10">
                 <div class="time">09:25 – 10:10</div>
                 <h3>Алгебра</h3>
                 <a href="algebra.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="10:20" data-end="11:05">
                 <div class="time">10:20 – 11:05</div>
                 <h3>Історія України</h3>
                 <a href="hystoryUKR.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="11:20" data-end="12:05">
                 <div class="time">11:20 – 12:05</div>
                 <h3>Біологія</h3>
                 <a href="biology.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="12:15" data-end="13:00">
                 <div class="time">12:15 – 13:00</div>
                 <h3>ЗБД</h3>
                 <a href="ZBD.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="13:10" data-end="13:55">
                 <div class="time">13:10 – 13:55</div>
                 <h3>Інформатика</h3>
                 <a href="Informatic.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="14:00" data-end="14:45">
                 <div class="time">14:00 – 14:45</div>
                 <h3>Громадянська освіта</h3>
                 <a href="grmadicOsvita.html"><button>перейти до посилання на зум</button></a>
             </div>
         </div>
-        <div class="tuesday">
+
+        <div class="tuesday" id="day-2">
             <div class="day">Вівторок</div>
-            <div class="leson">
+            <div class="leson" data-start="08:30" data-end="09:15">
                 <div class="time">08:30 – 09:15</div>
                 <h3>Українська література</h3>
                 <a href="ukrLit.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="09:25" data-end="10:10">
                 <div class="time">09:25 – 10:10</div>
                 <h3>Фізкультура</h3>
                 <a href="PE.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="10:20" data-end="11:05">
                 <div class="time">10:20 – 11:05</div>
                 <h3>Геометрія</h3>
                 <a href="Geometry.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="11:20" data-end="12:05">
                 <div class="time">11:20 – 12:05</div>
                 <h3>Біологія</h3>
                 <a href="biology.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="12:15" data-end="13:00">
                 <div class="time">12:15 – 13:00</div>
                 <h3>Фізика</h3>
                 <a href="physyc.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="13:10" data-end="13:55">
                 <div class="time">13:10 – 13:55</div>
                 <h3>Географія</h3>
                 <a href="Geography.html"><button>перейти до посилання на зум</button></a>
             </div>
         </div>
-        <div class="wednesday">
+
+        <div class="wednesday" id="day-3">
             <div class="day">Середа</div>
-            <div class="leson">
+            <div class="leson" data-start="08:30" data-end="09:15">
                 <div class="time">08:30 – 09:15</div>
                 <h3>Всесвітня історія</h3>
                 <a href="WorldHistory.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="09:25" data-end="10:10">
                 <div class="time">09:25 – 10:10</div>
                 <h3>Географія</h3>
                 <a href="Geography.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="10:20" data-end="11:05">
                 <div class="time">10:20 – 11:05</div>
                 <h3>Хімія</h3>
                 <a href="himia.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="11:20" data-end="12:05">
                 <div class="time">11:20 – 12:05</div>
                 <h3>Англійська мова</h3>
                 <a href="english.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="12:15" data-end="13:00">
                 <div class="time">12:15 – 13:00</div>
                 <h3>Алгебра</h3>
                 <a href="algebra.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="13:10" data-end="13:55">
                 <div class="time">13:10 – 13:55</div>
                 <h3>Мистецтво</h3>
                 <a href="mistetstvo.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="14:00" data-end="14:45">
                 <div class="time">14:00 – 14:45</div>
                 <h3>Інформатика</h3>
                 <a href="Informatic.html"><button>перейти до посилання на зум</button></a>
             </div>
         </div>
-        <div class="thursday">
+
+        <div class="thursday" id="day-4">
             <div class="day">Четвер</div>
-            <div class="leson">
+            <div class="leson" data-start="08:30" data-end="09:15">
                 <div class="time">08:30 – 09:15</div>
                 <h3>Фізкультура</h3>
                 <a href="PE.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="09:25" data-end="10:10">
                 <div class="time">09:25 – 10:10</div>
                 <h3>Геометрія</h3>
                 <a href="Geometry.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="10:20" data-end="11:05">
                 <div class="time">10:20 – 11:05</div>
                 <h3>Англійська мова</h3>
                 <a href="english.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="11:20" data-end="12:05">
                 <div class="time">11:20 – 12:05</div>
                 <h3>Українська мова</h3>
                 <a href="UKRmova.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="12:15" data-end="13:00">
                 <div class="time">12:15 – 13:00</div>
                 <h3>Українська мова</h3>
                 <a href="UKRmova.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="13:10" data-end="13:55">
                 <div class="time">13:10 – 13:55</div>
                 <h3>Українська література</h3>
                 <a href="ukrLit.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="14:00" data-end="14:45">
                 <div class="time">14:00 – 14:45</div>
                 <h3>Технології</h3>
-                <button disabled>перейти до посилання на зум</button>
+                <a href="technologia.html"><button>перейти до посилання на зум</button></a>
             </div>
         </div>
-        <div class="friday">
+
+        <div class="friday" id="day-5">
             <div class="day">П'ятниця</div>
-            <div class="leson">
+            <div class="leson" data-start="08:30" data-end="09:15">
                 <div class="time">08:30 – 09:15</div>
                 <h3>Фізкультура</h3>
                 <a href="PE.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="09:25" data-end="10:10">
                 <div class="time">09:25 – 10:10</div>
                 <h3>Алгебра</h3>
                 <a href="algebra.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="10:20" data-end="11:05">
                 <div class="time">10:20 – 11:05</div>
                 <h3>Англійська мова</h3>
                 <a href="english.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="11:20" data-end="12:05">
                 <div class="time">11:20 – 12:05</div>
                 <h3>Хімія</h3>
                 <a href="himia.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="12:15" data-end="13:00">
                 <div class="time">12:15 – 13:00</div>
                 <h3>Українська мова</h3>
                 <a href="UKRmova.html"><button>перейти до посилання на зум</button></a>
             </div>
-            <div class="leson">
+            <div class="leson" data-start="13:10" data-end="13:55">
                 <div class="time">13:10 – 13:55</div>
                 <h3>Зарубіжна література</h3>
                 <a href="zarubizna.html"><button>перейти до посилання на зум</button></a>
@@ -251,44 +239,17 @@
         </div>
     </div>
 
-    <div class="notify-toggle">
-        <input type="checkbox" id="notifySwitch">
-        <label for="notifySwitch">Сповіщення про уроки</label>
-    </div>
+    <!--<div class="emergensy-news">
+        <h1>УВАГА! Сайт може містити неправильні посилання...</h1>
+    </div>-->
 
     <script>
-        // Змінна для відстеження останнього сповіщеного уроку (щоб не було дублів)
-        let lastNotifiedSubject = "";
-        let currentVersion = 1;
-
-        // Ініціалізація при завантаженні сторінки
-        window.addEventListener('DOMContentLoaded', () => {
-            const notifySwitch = document.getElementById("notifySwitch");
-
-            // Стан перемикача
-            notifySwitch.checked = localStorage.getItem("lessonNotify") === "true";
-
-            notifySwitch.addEventListener("change", () => {
-                localStorage.setItem("lessonNotify", notifySwitch.checked);
-                if (notifySwitch.checked && Notification.permission !== "granted") {
-                    Notification.requestPermission();
-                }
-            });
-
-            // Запуски функцій
-            updateSchedule();
-            setInterval(updateSchedule, 30000); // Оновлення кожні 30 сек
-            setInterval(lessonNotifications, 30000); // Перевірка пушів кожні 30 сек
-            setInterval(checkSiteUpdate, 300000); // Оновлення сайту кожні 5 хв
-        });
-
-        // ===== Підсвітка розкладу =====
         function updateSchedule() {
             const now = new Date();
             const currentDay = now.getDay(); // 1-Пн, 5-Пт
             const currentTime = now.getHours() * 60 + now.getMinutes();
 
-            // Підсвітка поточного дня
+            // Підсвітка дня
             document.querySelectorAll('.monday, .tuesday, .wednesday, .thursday, .friday').forEach(el => {
                 el.classList.remove('current-day');
             });
@@ -296,7 +257,7 @@
             if (todayEl) todayEl.classList.add('current-day');
 
             // Підсвітка уроків
-            document.querySelectorAll('.lesson').forEach(lesson => {
+            document.querySelectorAll('.leson').forEach(lesson => {
                 const start = lesson.getAttribute('data-start');
                 const end = lesson.getAttribute('data-end');
                 if (!start || !end) return;
@@ -308,7 +269,7 @@
 
                 lesson.classList.remove('past', 'active');
 
-                // Перевіряємо тільки для сьогоднішнього дня
+                // Перевіряємо тільки якщо цей урок належить до сьогоднішнього дня
                 if (lesson.parentElement.id === `day-${currentDay}`) {
                     if (currentTime > endTime) {
                         lesson.classList.add('past');
@@ -319,61 +280,12 @@
             });
         }
 
-        // ===== Пуш-сповіщення =====
-        function lessonNotifications() {
-            if (localStorage.getItem("lessonNotify") !== "true") return;
-
-            const now = new Date();
-            const currentDay = now.getDay();
-            const currentTime = now.getHours() * 60 + now.getMinutes();
-
-            document.querySelectorAll(".lesson").forEach(lesson => {
-                const start = lesson.getAttribute("data-start");
-                const [h, m] = start.split(":").map(Number);
-                const lessonTime = h * 60 + m;
-                const subject = lesson.querySelector("h3").textContent;
-
-                // Якщо зараз 2 хвилини до початку і це сьогоднішній урок
-                if (lesson.parentElement.id === `day-${currentDay}` && 
-                    currentTime === lessonTime - 2 && 
-                    lastNotifiedSubject !== subject) {
-                    
-                    if (Notification.permission === "granted") {
-                        new Notification("Урок скоро почнеться!", {
-                            body: `${subject} почнеться за 2 хвилини`,
-                            icon: "https://cdn-icons-png.flaticon.com/512/2602/2602414.png" // Можна додати свою іконку
-                        });
-                        lastNotifiedSubject = subject; // Уникаємо повтору в цю ж хвилину
-                    }
-                }
-            });
-        }
-
-        // ===== Перевірка оновлення сайту =====
-        async function checkSiteUpdate() {
-            try {
-                const res = await fetch("update.json?" + Date.now());
-                if (!res.ok) return;
-                const data = await res.json();
-                if (data.version > currentVersion) {
-                    if (confirm("Доступна нова версія розкладу. Оновити?")) {
-                        location.reload();
-                    }
-                }
-            } catch (e) {
-                console.log("Оновлення не знайдено");
-            }
-        }
-
-        // Таймер на 1 годину перебування
-        setTimeout(() => {
-            if (confirm("Ви на сайті вже годину. Оновити дані?")) {
-                location.reload();
-            }
-        }, 3600000);
+        setInterval(updateSchedule, 30000); // Оновлення кожні 30 сек
+        updateSchedule();
     </script>
 </body>
 </html>
+
 
 
 
