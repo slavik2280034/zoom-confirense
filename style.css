@@ -92,3 +92,22 @@ button:disabled {
 a {
     text-decoration: none;
 }
+
+/* Стиль для відображення часу */
+.time {
+    font-size: 0.85rem;
+    color: #888; /* Світло-сірий колір */
+    font-weight: 600;
+    margin-bottom: 4px;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+/* Трохи зменшимо відступ у заголовка уроку, щоб все влізло */
+.leson h3 {
+    margin: 5px 0 10px 0;
+    font-size: 1rem;
+    text-align: center;
+    color: #2c3e50;
+}
