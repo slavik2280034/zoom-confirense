@@ -111,3 +111,80 @@ a {
     text-align: center;
     color: #2c3e50;
 }
+
+/* Основний контейнер хедера */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Розносить елементи по краях */
+    padding: 15px 30px;
+    background: #ffffff; /* Можна змінити на #1a1a1a для темної теми */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Групуємо аватар та ім'я зліва */
+.avatar, .name {
+    display: flex;
+    align-items: center;
+}
+
+.avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ddd;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.name h2 {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Центральна назва сайту */
+.name-site h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #333;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Кнопка виходу */
+.exit.button button {
+    padding: 8px 20px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.exit.button button:hover {
+    background-color: #ff6b81;
+    transform: translateY(-1px);
+}
+
+.exit.button a {
+    text-decoration: none;
+}
+
+/* Адаптивність для мобільних */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .name-site h1 {
+        order: -1; /* Назва сайту буде найпершою на мобільних */
+    }
+}
