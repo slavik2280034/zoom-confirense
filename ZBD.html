@@ -83,20 +83,57 @@
         <hr>
         <p>Тут може буде колись домашнє завдання або корисні файли.</p>
         
-        <a href="" class="zoom-link" target="_blank">
+        <a href="https://us04web.zoom.us/j/76414373919?pwd=WevrHUsr31UEhoikdnzuBvbVyyQzhv.1" class="zoom-link" target="_blank">
             Увійти в Zoom конференцію
         </a>
         <div class="access-info">
         <div class="info-item">
             <span>Ідентифікатор:</span>
-            <strong class="copy-text"></strong> </div>
+            <strong class="copy-text">764 1437 3919</strong> </div>
         <div class="info-item">
             <span>Код доступу:</span>
-            <strong class="copy-text"></strong> </div>
+            <strong class="copy-text">1254Qd</strong> </div>
         </div>
         <br><br>
         <a href="index.html" style="color: #888;">← Повернутися до розкладу</a>
     </div>
 
+    <script>
+function openLesson() {
+  // === НАЛАШТУВАННЯ УРОКУ ===
+  const meetingNumber = "76414373919"; // 🔴 Замініть на ID вашої конференції
+  const password = "1254Qd";         // 🔴 Замініть на пароль від Zoom
+  // ==========================
+
+  // Визначаємо, чи учень зайшов з мобільного (телефон/планшет)
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+  // Посилання для запуску додатка залежно від пристрою
+  const appLink = isMobile 
+    ? `zoomus://zoom.us/join?confno=${meetingNumber}&pwd=${password}`
+    : `zoommtg://zoom.us/join?confno=${meetingNumber}&pwd=${password}&mno=${meetingNumber}`;
+    
+  // Стандартне посилання (якщо додатка немає)
+  const webLink = `https://zoom.us{meetingNumber}?pwd=${password}`;
+
+  let appOpened = false;
+
+  // Якщо вкладка браузера «втратила фокус» (згорнулася), значить додаток Zoom успішно запустився
+  window.addEventListener('blur', function() {
+    appOpened = true;
+  });
+
+  // Пробуємо відкрити додаток Zoom
+  window.location.href = appLink;
+
+  // Чекаємо 2.5 секунди. Якщо учень досі на нашому сайті (appOpened = false), 
+  // значить додатка немає — відкриваємо стандартну сторінку в браузері
+  setTimeout(function() {
+    if (!appOpened) {
+      window.location.href = webLink;
+    }
+  }, 2500);
+}
+</script>
 </body>
 </html>
