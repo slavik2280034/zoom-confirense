@@ -73,6 +73,23 @@
             color: #4a90e2;
             text-decoration: underline;
         }
+
+        .lesson-btn {
+          padding: 15px 30px;
+          background-color: #2D8CFF; /* Фірмовий синій колір Zoom */
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 18px;
+          font-weight: bold;
+          cursor: pointer;
+            box-shadow: 0 4px 6px rgba(45, 140, 255, 0.3);
+          transition: all 0.2s ease;
+        }
+    .lesson-btn:hover {
+  background-color: #1a73e8;
+  transform: translateY(-2px);
+}
     </style>
 </head>
 <body style="background: #f4f7f6;">
@@ -82,7 +99,13 @@
         <p>Вчитель: Калініченко Валентина Борисівна</p>
         <hr>
         <p>Тут може буде колись домашнє завдання або корисні файли.</p>
-        
+
+        <p>новий спосіб</p>
+        <button onclick="openLesson()" class="lesson-btn">
+            🎒 Увійти на онлайн-урок в Zoom
+        </button>
+
+        <p>старий спосіб</p>
         <a href="https://us04web.zoom.us/j/73467194484?pwd=ajjEsZLcKipqjIjRcaeOlUtRMzoAwm.1" class="zoom-link" target="_blank">
             Увійти в Zoom конференцію
         </a>
@@ -97,6 +120,44 @@
         <br><br>
         <a href="index.html" style="color: #888;">← Повернутися до розкладу</a>
     </div>
+
+    <script>
+function openLesson() {
+  // 1. Ваше оригінальне посилання (сюди можна вставляти нове, якщо зміниться)
+  const webLink = "https://us04web.zoom.us/j/73467194484?pwd=ajjEsZLcKipqjIjRcaeOlUtRMzoAwm.1";
+
+  // Визначаємо пристрій учня
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+  // 2. Автоматично перетворюємо посилання під правильний протокол Zoom
+  let appLink = "";
+  if (isMobile) {
+    // Для телефонів міняємо https:// на zoomus://
+    appLink = webLink.replace("https://", "zoomus://");
+  } else {
+    // Для комп'ютерів міняємо домен на zoommtg та трансформуємо структуру
+    appLink = webLink.replace("https://us04web.zoom.us/j/", "zoommtg://us04web.zoom.us/join?confno=")
+                     .replace("?pwd=", "&pwd=");
+  }
+
+  let appOpened = false;
+
+  // Перевіряємо, чи запустився додаток (вкладка згорнулася)
+  window.addEventListener('blur', function() {
+    appOpened = true;
+  });
+
+  // Пробуємо відкрити додаток Zoom
+  window.location.href = appLink;
+
+  // Якщо через 2.5 секунди додаток не відкрився — запускаємо веб-версію в браузері
+  setTimeout(function() {
+    if (!appOpened) {
+      window.location.href = webLink;
+    }
+  }, 2500);
+}
+</script>
 
 </body>
 </html>
