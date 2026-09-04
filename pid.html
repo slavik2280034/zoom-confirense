@@ -82,7 +82,13 @@
         <p>Вчитель: Арсенюк Олена Ігорівна</p>
         <hr>
         <p>Тут може буде колись домашнє завдання або корисні файли.</p>
-        
+
+        <p>новий спосіб</p>
+        <button onclick="openLesson()" class="lesson-btn">
+            🎒 Увійти на онлайн-урок в Zoom
+        </button>
+
+        <p>старий спосіб</p>
         <a href="https://us04web.zoom.us/j/76710369226?pwd=DyQtJBV422f5yc0ifLtdc5MabU6KI5.1" class="zoom-link" target="_blank">
             Увійти в Zoom конференцію
         </a>
@@ -99,5 +105,42 @@
         <a href="index.html" style="color: #888;">← Повернутися до розкладу</a>
     </div>
 
+    <script>
+function openLesson() {
+  // 1. Ваше оригінальне посилання (сюди можна вставляти нове, якщо зміниться)
+  const webLink = "https://us04web.zoom.us/j/76710369226?pwd=DyQtJBV422f5yc0ifLtdc5MabU6KI5.1";
+
+  // Визначаємо пристрій учня
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+  // 2. Автоматично перетворюємо посилання під правильний протокол Zoom
+  let appLink = "";
+  if (isMobile) {
+    // Для телефонів міняємо https:// на zoomus://
+    appLink = webLink.replace("https://", "zoomus://");
+  } else {
+    // Для комп'ютерів міняємо домен на zoommtg та трансформуємо структуру
+    appLink = webLink.replace("https://us04web.zoom.us/j/", "zoommtg://us04web.zoom.us/join?confno=")
+                     .replace("?pwd=", "&pwd=");
+  }
+
+  let appOpened = false;
+
+  // Перевіряємо, чи запустився додаток (вкладка згорнулася)
+  window.addEventListener('blur', function() {
+    appOpened = true;
+  });
+
+  // Пробуємо відкрити додаток Zoom
+  window.location.href = appLink;
+
+  // Якщо через 2.5 секунди додаток не відкрився — запускаємо веб-версію в браузері
+  setTimeout(function() {
+    if (!appOpened) {
+      window.location.href = webLink;
+    }
+  }, 2500);
+}
+</script>
 </body>
 </html>
