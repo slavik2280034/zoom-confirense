@@ -73,6 +73,23 @@
             color: #4a90e2;
             text-decoration: underline;
         }
+
+        .lesson-btn {
+          padding: 15px 30px;
+          background-color: #2D8CFF; /* Фірмовий синій колір Zoom */
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 18px;
+          font-weight: bold;
+          cursor: pointer;
+            box-shadow: 0 4px 6px rgba(45, 140, 255, 0.3);
+          transition: all 0.2s ease;
+        }
+    .lesson-btn:hover {
+  background-color: #1a73e8;
+  transform: translateY(-2px);
+}
     </style>
 </head>
 <body style="background: #f4f7f6;">
@@ -82,7 +99,13 @@
         <p>Вчитель: Анатолій Комков та Альона Ігорівна</p>
         <hr>
         <p>Тут може буде колись домашнє завдання або корисні файли.</p>
-        
+
+        <p>новий спосіб</p>
+        <button onclick="openLesson()" class="lesson-btn">
+            🎒 Увійти на онлайн-урок в Zoom
+        </button>
+
+        <p>старий спосіб</p>
         <a href="https://us05web.zoom.us/j/4131830659?pwd=endpbnVCT1VXYkx0b2VTQzEwUHlnZz09" class="zoom-link" target="_blank">
             Увійти в Zoom конференцію група 1!
         </a>
@@ -94,7 +117,13 @@
             <span>Код доступу:</span>
             <strong class="copy-text">av9mhX</strong> </div>
         </div>
+        
+        <p>новий спосіб</p>
+        <button onclick="openLesson2()" class="lesson-btn">
+            🎒 Увійти на онлайн-урок в Zoom
+        </button>
 
+        <p>старий спосіб</p>
         <a href="https://us04web.zoom.us/j/71170963376?pwd=UIV6vOuObhzo898nXAfg8YdgcBUXOp.1" class="zoom-link" target="_blank">
             Увійти в Zoom конференцію група 2!
         </a>
@@ -110,5 +139,80 @@
         <a href="index.html" style="color: #888;">← Повернутися до розкладу</a>
     </div>
 
+    <script>
+function openLesson() {
+  // === НАЛАШТУВАННЯ УРОКУ ===
+  const meetingNumber = "4131830659"; // 🔴 Замініть на ID вашої конференції
+  const password = "av9mhX";         // 🔴 Замініть на пароль від Zoom
+  // ==========================
+
+  // Визначаємо, чи учень зайшов з мобільного (телефон/планшет)
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+  // Посилання для запуску додатка залежно від пристрою
+  const appLink = isMobile 
+    ? `zoomus://zoom.us/join?confno=${meetingNumber}&pwd=${password}`
+    : `zoommtg://zoom.us/join?confno=${meetingNumber}&pwd=${password}&mno=${meetingNumber}`;
+    
+  // Стандартне посилання (якщо додатка немає)
+  const webLink = `https://zoom.us{meetingNumber}?pwd=${password}`;
+
+  let appOpened = false;
+
+  // Якщо вкладка браузера «втратила фокус» (згорнулася), значить додаток Zoom успішно запустився
+  window.addEventListener('blur', function() {
+    appOpened = true;
+  });
+
+  // Пробуємо відкрити додаток Zoom
+  window.location.href = appLink;
+
+  // Чекаємо 2.5 секунди. Якщо учень досі на нашому сайті (appOpened = false), 
+  // значить додатка немає — відкриваємо стандартну сторінку в браузері
+  setTimeout(function() {
+    if (!appOpened) {
+      window.location.href = webLink;
+    }
+  }, 2500);
+}
+</script>
+
+    <script>
+function openLesson2() {
+  // === НАЛАШТУВАННЯ УРОКУ ===
+  const meetingNumber = "71170963376"; // 🔴 Замініть на ID вашої конференції
+  const password = "AswN0J";         // 🔴 Замініть на пароль від Zoom
+  // ==========================
+
+  // Визначаємо, чи учень зайшов з мобільного (телефон/планшет)
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+  // Посилання для запуску додатка залежно від пристрою
+  const appLink = isMobile 
+    ? `zoomus://zoom.us/join?confno=${meetingNumber}&pwd=${password}`
+    : `zoommtg://zoom.us/join?confno=${meetingNumber}&pwd=${password}&mno=${meetingNumber}`;
+    
+  // Стандартне посилання (якщо додатка немає)
+  const webLink = `https://zoom.us{meetingNumber}?pwd=${password}`;
+
+  let appOpened = false;
+
+  // Якщо вкладка браузера «втратила фокус» (згорнулася), значить додаток Zoom успішно запустився
+  window.addEventListener('blur', function() {
+    appOpened = true;
+  });
+
+  // Пробуємо відкрити додаток Zoom
+  window.location.href = appLink;
+
+  // Чекаємо 2.5 секунди. Якщо учень досі на нашому сайті (appOpened = false), 
+  // значить додатка немає — відкриваємо стандартну сторінку в браузері
+  setTimeout(function() {
+    if (!appOpened) {
+      window.location.href = webLink;
+    }
+  }, 2500);
+}
+</script>
 </body>
 </html>
